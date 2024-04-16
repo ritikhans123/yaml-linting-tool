@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAML to JSON Converter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script>
+
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        #converterContainer {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function convertYamlToJson() {
+        var yamlInput = document.getElementById('yamlInput').value;
+        
+        try {
+            var jsonObj = jsyaml.load(yamlInput);
+            var jsonOutput = JSON.stringify(jsonObj, null, 2);
+            document.getElementById('jsonOutput').value = jsonOutput;
+        } catch (error) {
+            console.error('Error parsing YAML:', error);
+            alert('Invalid YAML input. Please check your YAML.');
+        }
+    }
+</script>
+
+<!-- <h1 >YAML to JSON Converter</h1>
+
+<label for="yamlInput">YAML Input:</label>
+<textarea id="yamlInput" rows="9" cols="50"></textarea>
+
+<button onclick="convertYamlToJson()">Convert</button>
+
+<label for="jsonOutput">JSON Output:</label>
+<textarea id="jsonOutput" rows="9" cols="50" readonly></textarea> -->
+
+
+
+<div id="converterContainer">
+    <h1 class="mt-4 mb-4">YAML to JSON Converter</h1>
+
+    <div class="form-group">
+        <label for="yamlInput">YAML Input:</label>
+        <textarea id="yamlInput" class="form-control" rows="9" cols="50"></textarea>
+    </div>
+
+    <button onclick="convertYamlToJson()" class="btn btn-primary mb-3">Convert</button>
+
+    <div class="form-group">
+        <label for="jsonOutput">JSON Output:</label>
+        <textarea id="jsonOutput" class="form-control" rows="9" cols="50" readonly></textarea>
+    </div>
+</div>
+
+</body>
+</html>
